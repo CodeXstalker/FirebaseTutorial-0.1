@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         firebaseDatabase =
             FirebaseDatabase.getInstance() // This helps in getting the INSTANCE to whole database
         firebaseReference =
-            firebaseDatabase.reference  // This helps in getting  the reference to the root node
+            firebaseDatabase.getReference()  // This helps in getting  the reference to the root node
 
         button = findViewById(R.id.button)
         editText = findViewById(R.id.editText)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             val name: String = editText.text.toString()
-            firebaseReference.setValue(name)
+            firebaseReference.child("New").child("Latest").setValue(name) // creating child with child method
 
         }
 
@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
             })
 
         }
-
-
+        
     }
 }
